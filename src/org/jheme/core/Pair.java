@@ -5,19 +5,21 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class Pair<E> implements List<E>, Iterator<E> {
-	private E _car, _cdr;
+public class Pair<E> implements List<E> {
+	private class pair_iterator<E> implements Iterator<E> {
+		@Override
+		public boolean hasNext() {
+			return _cdr != null;
+		}
 
-	@Override
-	public boolean hasNext() {
-		return _cdr != null;
-	}
+		@Override
+		public E next() {
+			return _car;
+		}
 
-	@Override
-	public E next() {
-		// TODO Auto-generated method stub
-		return null;
 	}
+	private E _car;
+	private List<E> _cdr;
 
 	@Override
 	public void remove() {
