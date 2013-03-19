@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class Parser {
 	private static Pattern _tokenPattern =
-		Pattern.compile("\\(|\\)|['`~,]|[\\w!@#$%^&*-=+?/]+|\"[^\"]*\"|\\S");
+		Pattern.compile("\\(|\\)|['`~,\\.]|[\\w!@#$%^&*-=+?/]+|\"[^\"]*\"|\\S");
 	public static List<String> tokens(String str) {
 		List<String> tokens = new LinkedList<>();
 		Matcher m = _tokenPattern.matcher(str);
