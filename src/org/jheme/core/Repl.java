@@ -13,6 +13,8 @@ public class Repl {
 	        System.out.print("> ");
 	        try {
 				String s = br.readLine();
+                if ("QUIT".equals(s))
+                    break;
 				List<String> tokens = Parser.tokens(s);
 				System.out.println(tokens);
 				List<Object> lst = Parser.parse(tokens);
