@@ -8,6 +8,7 @@ import java.util.List;
 public class Repl {
 	public static void main(String[] args) {
 		System.out.println("jheme");
+		final Eval eval = new Eval();
 		while (true) {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	        System.out.print("> ");
@@ -16,9 +17,10 @@ public class Repl {
                 if ("QUIT".equals(s))
                     break;
 				List<String> tokens = Parser.tokens(s);
-				System.out.println(tokens);
+				// System.out.println(tokens);
 				List<Object> lst = Parser.parse(tokens);
-				System.out.println(lst);
+				// System.out.println(lst);
+				System.out.println(eval.evalSequence(lst));
 			} catch (IOException e) {
 				e.printStackTrace();
 			} catch (RuntimeException e) {

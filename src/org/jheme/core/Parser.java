@@ -52,6 +52,10 @@ public class Parser {
 			return Integer.parseInt(str);
 		if (_flt.matcher(str).matches())
 			return Double.parseDouble(str);
+		if ("true".equals(str))
+			return true;
+		if ("false".equals(str))
+			return false;
 		return new Symbol(str);
 	}
 }
