@@ -4,6 +4,23 @@ import java.util.Iterator;
 import java.util.List;
 
 public abstract class Function {
+	final private String _name;
+
+	public Function() {
+		_name = null;
+	}
+
+	public Function(String name) {
+		_name = name;
+	}
+
+	@Override
+	public String toString() {
+		if (_name != null)
+			return _name;
+		return "<unnamed function>";
+	}
+
 	public Object doCall(List<?> args) {
 		if (args.isEmpty())
 			return apply();
