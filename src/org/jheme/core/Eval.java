@@ -71,8 +71,8 @@ public class Eval {
 		
 		Object l = eval(op);
 		
-		if (l instanceof Lambda)
-			return ((Lambda) l).doCall(args);
+		if (l instanceof Function)
+			return ((Function) l).doCall(args);
 			
 		throw new RuntimeException("Cannot apply " + l.toString());
 	}

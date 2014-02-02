@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class Lambda {
+public class Lambda extends Function {
 	private final Eval _env;
 	private final List<Symbol> _names;
 	private final List<?> _body;
@@ -30,6 +30,7 @@ public class Lambda {
 		return ext;
 	}
 	
+	@Override
 	public Object doCall(List<?> args) {
 		return new Eval(_env, extendEnv(args)).evalSequence(_body);
 	}
