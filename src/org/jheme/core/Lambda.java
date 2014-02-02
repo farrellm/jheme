@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class Lambda extends Function {
+public class Lambda extends Form {
 	private final Eval _env;
 	private final List<Symbol> _names;
 	private final List<?> _body;

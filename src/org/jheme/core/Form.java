@@ -3,14 +3,14 @@ package org.jheme.core;
 import java.util.Iterator;
 import java.util.List;
 
-public abstract class Function {
+public abstract class Form {
 	final private String _name;
 
-	public Function() {
+	public Form() {
 		_name = null;
 	}
 
-	public Function(String name) {
+	public Form(String name) {
 		_name = name;
 	}
 
