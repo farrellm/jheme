@@ -50,7 +50,7 @@ public class Parser {
 		if (m.matches())
 			return m.group(1);
 		if (_int.matcher(str).matches())
-			return Integer.parseInt(str);
+			return Long.parseLong(str);
 		if (_flt.matcher(str).matches())
 			return Double.parseDouble(str);
 		if ("true".equals(str))
