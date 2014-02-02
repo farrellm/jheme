@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.jheme.numeric.Wrap;
+
 public class RootEnvironment {
 	private static final Pair<Map<Symbol, Object>> _rootEnv;
 
@@ -69,7 +71,7 @@ public class RootEnvironment {
 		});
 
 		// functions
-		env.put(Symbol.getInstance("quit"), new Function("quit"){
+		env.put(Symbol.getInstance("quit"), new Function("quit") {
 			@Override
 			protected Object apply() {
 				System.exit(0);
@@ -80,6 +82,64 @@ public class RootEnvironment {
 			protected Object apply(Object a1) {
 				System.exit((Integer)a1);
 				return null;
+			}
+		});
+		env.put(Symbol.getInstance("="), new FunctionN("=") {
+			@Override
+			protected Object apply(List<Object> args) {
+				Iterator<Object> iter = args.iterator();
+				Object first = iter.next();
+				while (iter.hasNext())
+					if (! first.equals(iter.next()))
+						return false;
+				return true;
+			}
+		});
+
+		env.put(Symbol.getInstance("+"), new FunctionN("+") {
+			@Override
+			protected Object apply(List<Object> args) {
+				if (args.isEmpty())
+					return Long.valueOf(0);
+
+				Iterator<Object> iter = args.iterator();
+				Number val = (Number)iter.next();
+				while (iter.hasNext())
+					val = Wrap.add(val, iter.next());
+				return val;
+			}
+		});
+		env.put(Symbol.getInstance("-"), new FunctionN("-") {
+			@Override
+			protected Object apply(List<Object> args) {
+				Iterator<Object> iter = args.iterator();
+				Number val = (Number)iter.next();
+				while (iter.hasNext())
+					val = Wrap.sub(val, iter.next());
+				return val;
+			}
+		});
+		env.put(Symbol.getInstance("*"), new FunctionN("*") {
+			@Override
+			protected Object apply(List<Object> args) {
+				if (args.isEmpty())
+					return Long.valueOf(1);
+
+				Iterator<Object> iter = args.iterator();
+				Number val = (Number)iter.next();
+				while (iter.hasNext())
+					val = Wrap.mul(val, iter.next());
+				return val;
+			}
+		});
+		env.put(Symbol.getInstance("/"), new FunctionN("/") {
+			@Override
+			protected Object apply(List<Object> args) {
+				Iterator<Object> iter = args.iterator();
+				Number val = (Number)iter.next();
+				while (iter.hasNext())
+					val = Wrap.div(val, iter.next());
+				return val;
 			}
 		});
 	}
