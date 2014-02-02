@@ -40,9 +40,10 @@ public class Parser {
 		throw new RuntimeException("missing ')'");
 	}
 	
-	private static Pattern _str = Pattern.compile("\"(.*)\"");
-	private static Pattern _int = Pattern.compile("-?\\d+");
-	private static Pattern _flt = Pattern.compile("-?\\d+\\.\\d*");
+	private static final Pattern _str = Pattern.compile("\"(.*)\"");
+	private static final Pattern _int = Pattern.compile("-?\\d+");
+	private static final Pattern _flt = Pattern.compile("-?\\d+\\.\\d*");
+
 	private static Object parse(String str) {
 		Matcher m;
 		m = _str.matcher(str);
@@ -53,9 +54,11 @@ public class Parser {
 		if (_flt.matcher(str).matches())
 			return Double.parseDouble(str);
 		if ("true".equals(str))
-			return true;
+			return Boolean.TRUE;
 		if ("false".equals(str))
-			return false;
+			return Boolean.FALSE;
+		if ("null".equals(str))
+			return null;
 		return new Symbol(str);
 	}
 }

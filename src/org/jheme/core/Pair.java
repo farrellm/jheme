@@ -3,6 +3,7 @@ package org.jheme.core;
 import java.util.AbstractSequentialList;
 import java.util.Iterator;
 import java.util.ListIterator;
+import java.util.NoSuchElementException;
 
 public class Pair<E> extends AbstractSequentialList<E> {
 	final private E _car;
@@ -67,12 +68,10 @@ public class Pair<E> extends AbstractSequentialList<E> {
 	
 	private class pair_list_iterator implements ListIterator<E> {
 		private Pair<E> _cur;
-		private Pair<E> _back;
 		private int _index;
 
 		pair_list_iterator(Pair<E> p, int n) {
 			_cur = p;
-			_back = null;
 			_index = 0;
 			
 			while(n-- > 0)
@@ -86,25 +85,20 @@ public class Pair<E> extends AbstractSequentialList<E> {
 		
 		@Override
 		public boolean hasPrevious() {
-			return _back != null;
+			return false;
 		}
 
 		@Override
 		public E next() {
 			final E v = _cur._car;
 			_cur = _cur._cdr;
-			_back = new Pair<E>(v, _back);
 			_index++;
 			return v;
 		}
 		
 		@Override
 		public E previous() {
-			final E v = _back._car;
-			_back = _back._cdr;
-			_cur = new Pair<E>(v, _cur);
-			_index--;
-			return v;
+			throw new NoSuchElementException();
 		}
 
 		@Override

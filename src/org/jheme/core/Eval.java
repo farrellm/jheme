@@ -74,7 +74,7 @@ public class Eval {
 		if (l instanceof Lambda)
 			return ((Lambda) l).doCall(args);
 			
-		return null;
+		throw new RuntimeException("Cannot apply " + l.toString());
 	}
 	
 	protected Object evalIf(List<?> args) {

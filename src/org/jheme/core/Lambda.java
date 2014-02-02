@@ -16,7 +16,7 @@ public class Lambda {
 		_body = body;
 	}
 
-	public Map<Symbol, Object> getExt(List<?> args) {
+	private Map<Symbol, Object> extendEnv(List<?> args) {
 		ArgumentException.expected(_names.size(), args);
 		
 		Iterator<Symbol> sym = _names.iterator();
@@ -30,11 +30,7 @@ public class Lambda {
 		return ext;
 	}
 	
-	public Object getBody() {
-		return _body;
-	}
-	
 	public Object doCall(List<?> args) {
-		return new Eval(_env, getExt(args)).evalSequence(_body);
+		return new Eval(_env, extendEnv(args)).evalSequence(_body);
 	}
 }
