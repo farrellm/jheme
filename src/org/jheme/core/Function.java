@@ -47,26 +47,32 @@ public abstract class Function {
 	}
 	
 	protected Object apply() { 
-		throw new UnsupportedOperationException("incorrect number of arguments: 0");
+		throw new UnsupportedOperationException(
+				"incorrect number of arguments for '" + toString() + "': 0");
 	}
 
 	protected Object apply(Object a1) { 
-		throw new UnsupportedOperationException("incorrect number of arguments: 1");
+		throw new UnsupportedOperationException(
+				"incorrect number of arguments for '" + toString() + "': 1");
 	}
 	
 	protected Object apply(Object a1, Object a2) { 
-		throw new UnsupportedOperationException("incorrect number of arguments: 2");
+		throw new UnsupportedOperationException(
+				"incorrect number of arguments for '" + toString() + "': 2");
 	}
 	
 	protected Object apply(Object a1, Object a2, Object a3) { 
-		throw new UnsupportedOperationException("incorrect number of arguments: 3");
+		throw new UnsupportedOperationException(
+				"incorrect number of arguments for '" + toString() + "': 3");
 	}
 	
 	protected Object apply(Object a1, Object a2, Object a3, Object a4) { 
-		throw new UnsupportedOperationException("incorrect number of arguments: 4");
+		throw new UnsupportedOperationException(
+				"incorrect number of arguments for '" + toString() + "': 4");
 	}
-	
+
 	protected Object apply(Object a1, Object a2, Object a3, Object a4, Object a5) { 
-		throw new UnsupportedOperationException("incorrect number of arguments: 5");
+		throw new UnsupportedOperationException(
+				"incorrect number of arguments for '" + toString() + "': 5");
 	}
 }
